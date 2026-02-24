@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Soul is Pure</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(to bottom right, #fff0f5, #ffe6f0);
+    color: #333;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  h1 {
+    text-align: center;
+    font-family: 'Great Vibes', cursive;
+    font-size: 3em;
+    color: #ff69b4;
+    margin: 50px 0;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .stanza {
+    font-size: 1.25em;
+    line-height: 2;
+    margin-bottom: 40px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease;
+    position: relative;
+    background: rgba(255, 192, 203, 0.15);
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  .stanza.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Cute floating hearts and sparkles */
+  .heart, .sparkle {
+    position: fixed;
+    width: 25px;
+    height: 25px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .heart {
+    background: url('https://i.ibb.co/pRZsGm3/heart.png') no-repeat center;
+    background-size: contain;
+    animation: floatUp linear infinite;
+  }
+
+  .sparkle {
+    background: url('https://i.ibb.co/tpLw86Q/sparkle.png') no-repeat center;
+    background-size: contain;
+    animation: sparkleUp linear infinite;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(100vh) scale(0.5); opacity: 0.6; }
+    100% { transform: translateY(-50px) scale(1); opacity: 0; }
+  }
+
+  @keyframes sparkleUp {
+    0% { transform: translateY(100vh) scale(0.3) rotate(0deg); opacity: 0.8; }
+    100% { transform: translateY(-50px) scale(0.8) rotate(360deg); opacity: 0; }
+  }
+
+  @media(max-width: 600px) {
+    h1 { font-size: 2.2em; }
+    .stanza { font-size: 1.1em; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Your Soul is Pure</h1>
+<div class="container">
+  <p class="stanza">Your soul is pure like a diamond,<br>
+  So brave and so strong, no matter what lies ahead.<br>
+  Your heart is warm and endlessly precious,<br>
+  Loving others more than yourself instead.</p>
+
+  <p class="stanza">Your eyes are deeper than the ocean blue,<br>
+  And when I look into them, I drown —<br>
+  Afraid I may never come back up for air,<br>
+  Yet secretly hoping I never do.</p>
+
+  <p class="stanza">Your lips are soft like forbidden fruit,<br>
+  A sweetness I may never taste,<br>
+  But even the thought of them<br>
+  Makes my heart race.</p>
+
+  <p class="stanza">Your smile shines brighter than galaxies,<br>
+  More beautiful than the Seven Wonders could ever be.<br>
+  And every time I look at you, I wonder —<br>
+  Are you real, or just a dream meant for me?</p>
+
+  <p class="stanza">If this is a dream, please don’t wake me up,<br>
+  It’s the most beautiful one I’ve ever known.</p>
+
+  <p class="stanza">Your skin glows like fireflies in the night,<br>
+  Brighter than a full moon softly shone.<br>
+  I hope I see you soon —<br>
+  because every day, that’s the quiet wish on my mind.</p>
+
+  <p class="stanza">Talking to you makes time slow down,<br>
+  As if the world gently fades away.<br>
+  To me, you are a crown —<br>
+  Rare, powerful, profound.</p>
+
+  <p class="stanza">A single day with you eases my pain,<br>
+  Makes my heartbeat soar like an airplane.<br>
+  Like an espresso shot on a winter morning,<br>
+  You awaken my soul again and again.</p>
+
+  <p class="stanza">The more I have of you,<br>
+  The more I crave —<br>
+  Not out of need,<br>
+  But because your presence feels like home.</p>
+
+  <p class="stanza">And there is something I try to say,<br>
+  Every time we meet.<br>
+  I rehearse it quietly in my mind<br>
+  On my way to see you.<br>
+  I promise myself,<br>
+  “This time, I won’t hold back.”</p>
+
+  <p class="stanza">But then I look at you —<br>
+  And suddenly,<br>
+  The simplest words become the hardest to speak.</p>
+
+  <p class="stanza">Not because they are wrong.<br>
+  Not because they are uncertain.<br>
+  But because your presence<br>
+  Has a way of humbling me.</p>
+
+  <p class="stanza">So I hide it behind small smiles<br>
+  And unfinished sentences,<br>
+  Hoping one day<br>
+  I’ll be brave enough<br>
+  To say out loud<br>
+  What my heart has known all along.</p>
+</div>
+
+<script>
+  // Fade in stanzas when scrolled into view
+  const stanzas = document.querySelectorAll('.stanza');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.3 });
+  stanzas.forEach(stanza => observer.observe(stanza));
+
+  // Generate floating hearts and sparkles
+  function createFloating() {
+    const isHeart = Math.random() > 0.5;
+    const div = document.createElement('div');
+    div.className = isHeart ? 'heart' : 'sparkle';
+    div.style.left = Math.random() * window.innerWidth + 'px';
+    div.style.animationDuration = (3 + Math.random() * 3) + 's';
+    document.body.appendChild(div);
+    setTimeout(() => div.remove(), 7000);
+  }
+  setInterval(createFloating, 500);
+</script>
+
+</body>
+</html>
